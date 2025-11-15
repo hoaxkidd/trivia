@@ -7,14 +7,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const startBtn = getElement("#start");
     const resetBtn = getElement("#reset");
     const question = getElement("#p");
-    let a = getElement("#button-A");
-    let b = getElement("#button-B");
-    let c = getElement("#button-C");
-    let d = getElement("#button-D");
+    const timerText = getElement("#timer");
+    let btnA = getElement("#button-A");
+    let btnB = getElement("#button-B");
+    let btnC = getElement("#button-C");
+    let btnD = getElement("#button-D");
 
-
-    
-    
+   
     const trivia = [
   {
     "question": "Which animal is the fastest land animal?",
@@ -218,26 +217,107 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 ]
 
+    // let questions = [];
+    let numberOfQuestions = 10;
+    let score = 0;
+    let currentIndex = 0;
+    let currentQuestion = {};
     const randomIndex = Math.floor(Math.random() * trivia.length);
     const randomQuestion = trivia[randomIndex];
     const options = randomQuestion.options;
-    
-    
 
-    startBtn.addEventListener("click", () => {
+    // for (let i = 0; i < numberOfQuestions; i++) {
+    //    question.push(randomQuestion)
+    // }
+
+    // console.log(questions);
+
+
+     // check if user choice is correct
+    const buttons = [btnA, btnB, btnC, btnD];
+    buttons.forEach((button) => {
+        button.addEventListener("click", (e) => {
+            const userChoice = e.target.textContent;
+            const correctAnswer = trivia[currentIndex].options[trivia[currentIndex].answer];
+            if (userChoice === correctAnswer) {
+                score++;
+            }
+            nextQuestion();
+        });
+    });
+
+    let timerInterval;
+
+    function quizTimer(){
+        clearInterval(timerInterval);
+        let timeLeft = 10;
+        timerText.textContent = timeLeft;
+
+        //need to reset timeLeft when next question loads
+        timerInterval = setInterval(() => {
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+        
+                nextQuestion();
+            } else {
+                timerText.textContent = timeLeft;
+            }
+            timeLeft -= 1;
+        }, 1000);
+    }
+
+    // function countScore() {
+        
+    // }
+
+    function startQuiz() {
+
+        const randomIndex = Math.floor(Math.random() * trivia.length);
+        const randomQuestion = trivia[randomIndex];
 
         p.textContent = randomQuestion.question;
+        btnA.textContent = randomQuestion.options.A;
+        btnB.textContent = randomQuestion.options.B;
+        btnC.textContent = randomQuestion.options.C;
+        btnD.textContent = randomQuestion.options.D;  
+    }
+
+    // need to fix next question function to loop through all questions
+    function nextQuestion() {
+        currentIndex++;
+        currentQuestion = trivia[currentIndex];
+        question.textContent = currentQuestion.question;
+        btnA.textContent = currentQuestion.options.A;
+        btnB.textContent = currentQuestion.options.B;
+        btnC.textContent = currentQuestion.options.C;
+        btnD.textContent = currentQuestion.options.D;  
+    }
+
+    function resetQuiz() {
+        timerText.textContent = "10";
+        currentIndex = 0;
+        score = 0;
+        while (currentIndex < numberOfQuestions) {
+            p.textContent = "Press Start to begin the quiz!";
+            btnA.textContent = "A";
+            btnB.textContent = "B";
+            btnC.textContent = "C";
+            btnD.textContent = "D";
+            currentIndex++;
+        }
         
-        a.textContent = randomQuestion.options.A;
-        b.textContent = randomQuestion.options.B;
-        c.textContent = randomQuestion.options.C;
-        d.textContent = randomQuestion.options.D;
-        console.log(randomIndex, randomQuestion, options);
+        // issue with timer not resetting properly
+        clearInterval(timerInterval);
+
+    }
+
+    startBtn.addEventListener("click", () => {
+        startQuiz();
+        quizTimer();
     });
 
     resetBtn.addEventListener("click", () => {
-        a.textContent = "";
-
+       resetQuiz();
     })
 
 
