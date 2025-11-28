@@ -200,3 +200,19 @@
     "answer": "C"
   }
 ]
+
+
+export async function loadQuestions() {
+  const url = 'https://opentdb.com/api.php?amount=50&category=31&difficulty=easy&type=multiple';
+  
+  const response = await fetch(url);
+  const questions = await response.json();
+  
+  const shuffled = [...questions.results]
+  
+  for(let i = 0; i < 10; i++){
+    console.log(shuffled[i])
+  }
+}
+
+loadQuestions();
