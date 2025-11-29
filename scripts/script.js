@@ -1,6 +1,9 @@
 "use strict";
 
+// reference problem from scripts folder
 import { trivia } from "./trivia.js";
+
+import { loadQuestions } from "./questions.js";
 
 const getElement = (selector) => document.querySelector(selector);
 
