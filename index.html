@@ -9,37 +9,48 @@
 </head>
 <body>
 
-    <div class="game-wrapper">
-        <div class="game-card">
+    <div id="container">
 
-            <h1 class="title">Trivia Challenge</h1>
+        <h1>Welcome to Anime Trivia</h1>
+        <p id="intro">
+            Get ready to challenge your brain, test your knowledge, and have a blast! Whether you’re a trivia novice or a seasoned quiz master, there’s something here for everyone.<br><br>Dive into categories, rack up points, and see how you stack up against friends or other players.<br><br>
+            Have any questions or need help? Don’t hesitate to reach out — we’re here to make your trivia experience fun and smooth!
+        </p>
 
-            <p class="category" id="category">Category: here</p>
 
-            <p class="question-text" id="p">
-                Welcome to Trivia!
-            </p>
-
-            <div class="answers">
-                <button class="answer-btn" id="button-A">Option A</button>
-                <button class="answer-btn" id="button-B">Option B</button>
-                <button class="answer-btn" id="button-C">Option C</button>
-                <button class="answer-btn" id="button-D">Option D</button>
+        <div class="game-wrapper">
+            <div class="game-card">
+                
+                <h1 class="title">Trivia Challenge</h1>
+                
+                <p class="category" id="category">Category: here</p>
+                
+                <p class="question-text" id="p">
+                    Welcome to Trivia!
+                </p>
+                
+                <div class="answers">
+                    <button class="answer-btn" id="button-A">Option A</button>
+                    <button class="answer-btn" id="button-B">Option B</button>
+                    <button class="answer-btn" id="button-C">Option C</button>
+                    <button class="answer-btn" id="button-D">Option D</button>
+                </div>
+                
+                <div class="game-stats">
+                    <p>Score: <span id="score">0</span></p>
+                    <p>Questions Left: <span id="questionsLeft">0</span></p>
+                    <p>Time Left: <span id="timer">10</span> seconds</p>
+                </div>
+                
+                <button id="start" class="start-btn">Start Quiz</button>
+                <button id="reset" class="reset-btn">Reset</button>
+                
             </div>
-
-            <div class="game-stats">
-                <p>Score: <span id="score">0</span></p>
-                <p>Questions Left: <span id="questionsLeft">0</span></p>
-                <p>Time Left: <span id="timer">10</span> seconds</p>
-            </div>
-
-            <button id="start" class="start-btn">Start Quiz</button>
-            <button id="reset" class="reset-btn">Reset</button>
-
         </div>
+        
     </div>
-
-    <script src="./scripts/trivia.js" type="module"></script>
+        
+    <script src="./scripts/script.js" type="module"></script>
     <!-- <script src="trivia.js" type="module"></script> -->
 </body>
 </html>
