@@ -25,15 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
     let score = 0;
     let currentIndex = 0;
     let timerInterval;
-   
-   
+
      //  fixed bug
     function updateQuestionsLeft() {
         questionsLeft.textContent = numberOfQuestions - currentIndex;
     }
     
-
-    function quizTimer(){
+    function quizTimer() {
         clearInterval(timerInterval);
 
         let timeLeft = 10;
@@ -48,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 currentIndex++ // next question
                 nextQuestion(); //update UI
                 return;
-            } 
+            }
 
             timerText.textContent = timeLeft;
         }, 1000);
@@ -58,12 +56,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const buttons = [btnA, btnB, btnC, btnD];
 
         buttons.forEach((button) => {
-            button.addEventListener("click", () => {
-                
+            button.addEventListener("click", function () {    
                 if (currentIndex >= currentQuestions.length) return;
 
                 const userChoice = this.textContent;
-                
+
                 const answerKey = currentQuestions[currentIndex].answer;
                 const correctAnswer = currentQuestions[currentIndex].options[answerKey];
 
@@ -79,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updateScoreDisplay() {
         scoreDisplay.textContent = score;
-    } 
+    }
 
     async function startQuiz() {
 
@@ -90,7 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         updateScoreDisplay();
 
-        
         calculateScore();
         nextQuestion();
         updateQuestionsLeft();
@@ -99,21 +95,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // need to fix next question function to loop through all questions
     function nextQuestion() {
-        if (currentIndex >= currentQuestions.length){
+        if (currentIndex >= currentQuestions.length) {
             clearInterval(timerInterval);
-            question.textContent = `Quiz over! Final Score: ${score}/${numberOfQuestions}`
+            question.textContent = `Quiz over! Final Score: ${score}/${numberOfQuestions}`;
             return;
         }
-        
-        
-        const currentQuestion = currentQuestions[currentIndex];
 
+        const currentQuestion = currentQuestions[currentIndex];
+      
         question.textContent = currentQuestion.question;
         btnA.textContent = currentQuestion.options.A;
         btnB.textContent = currentQuestion.options.B;
         btnC.textContent = currentQuestion.options.C;
-        btnD.textContent = currentQuestion.options.D; 
-        
+        btnD.textContent = currentQuestion.options.D;
+
         updateQuestionsLeft();
         quizTimer();
         updateScoreDisplay();
@@ -124,8 +119,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         currentIndex = 0;
         score = 0;
-   
-        // reset dispaly text
+
+        // reset display text
         question.textContent = "Press Start to begin the quiz!";
         btnA.textContent = "Option A";
         btnB.textContent = "Option B";
@@ -135,9 +130,8 @@ document.addEventListener("DOMContentLoaded", () => {
         scoreDisplay.textContent = "0";
         timerText.textContent = "10";
         questionsLeft.textContent = numberOfQuestions;
-
     }
 
     startBtn.addEventListener("click", startQuiz);
     resetBtn.addEventListener("click", resetQuiz);
-})
+});
