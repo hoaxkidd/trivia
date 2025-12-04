@@ -1,8 +1,5 @@
 "use strict";
 
-// reference problem from scripts folder
-// import { trivia } from "./trivia.js";
-
 import { loadQuestions } from "./questions.js";
 
 const getElement = (selector) => document.querySelector(selector);
@@ -23,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let btnD = getElement("#button-D");
 
     // let questions = [];
-    let currentQuestions = []
+    let currentQuestions = [];
     let numberOfQuestions = 10;
     let score = 0;
     let currentIndex = 0;
@@ -32,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
    
      //  fixed bug
     function updateQuestionsLeft() {
-      questionsLeft.textContent = numberOfQuestions - currentIndex;
+        questionsLeft.textContent = numberOfQuestions - currentIndex;
     }
     
 
@@ -74,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     score++;
                 }
 
-                currentIndex++
+                currentIndex++;
                 nextQuestion();
             });
         });
@@ -130,18 +127,17 @@ document.addEventListener("DOMContentLoaded", () => {
    
         // reset dispaly text
         question.textContent = "Press Start to begin the quiz!";
-        btnA.textContent = "A";
-        btnB.textContent = "B";
-        btnC.textContent = "C";
-        btnD.textContent = "D";
+        btnA.textContent = "Option A";
+        btnB.textContent = "Option B";
+        btnC.textContent = "Option C";
+        btnD.textContent = "Option D";
 
-        scoreDisplay.textContent = "0"
+        scoreDisplay.textContent = "0";
         timerText.textContent = "10";
         questionsLeft.textContent = numberOfQuestions;
 
     }
 
     startBtn.addEventListener("click", startQuiz);
-
     resetBtn.addEventListener("click", resetQuiz);
 })

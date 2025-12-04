@@ -16,8 +16,8 @@ export async function loadQuestions() {
         return array;
     }
 
-    // shuffle questions
-    shuffle(questions);
+    // // shuffle questions
+    // shuffle(questions);
 
     // converts HTML entities &quot;, &amp into readable characters
     function decodeHTML(str) {
