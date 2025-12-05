@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Trivia Questions</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="container">
+        <h1>Manage Trivia Questions</h1>
+        <p id="intro">
+            Use this page to add, edit, or delete your quiz questions. Changes will only be saved when you click the
+            <strong>Save Questions</strong> button. You can add up to 10 questions.
+        </p>
+        <div style="text-align:center; margin-bottom: 20px;">
+            <a href="index.html" class="start-btn">Back to Quiz</a>
+        </div>
+        <div id="manage-container">
+            <!-- Question editor form -->
+            <div id="question-editor">
+                <h2>Add / Edit Question</h2>
+                <form id="edit-form">
+                    <label for="question-input">Question</label>
+                    <input type="text" id="question-input" required>
+
+                    <label for="A-input">Option A</label>
+                    <input type="text" id="A-input" required>
+
+                    <label for="B-input">Option B</label>
+                    <input type="text" id="B-input" required>
+
+                    <label for="C-input">Option C</label>
+                    <input type="text" id="C-input" required>
+
+                    <label for="D-input">Option D</label>
+                    <input type="text" id="D-input" required>
+
+                    <label for="correct-option">Correct Option</label>
+                    <select id="correct-option" required>
+                        <option value="0">A</option>
+                        <option value="1">B</option>
+                        <option value="2">C</option>
+                        <option value="3">D</option>
+                    </select>
+                    <button type="submit" id="add-update-btn" class="start-btn">Add Question</button>
+                </form>
+                <p id="temp-question-count"></p>
+            </div>
+            <!-- Current questions list -->
+            <div id="question-list">
+                <h2>Current Questions</h2>
+                <div id="questions-container"></div>
+            </div>
+        </div>
+        <div style="text-align:center; margin-top: 20px;">
+            <button id="save-questions-btn" class="start-btn">Save Questions</button>
+        </div>
+    </div>
+    <script src="./scripts/add_questions.js"></script>
+</body>
+</html>
